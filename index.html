@@ -8,27 +8,27 @@
 </head>
 <body>
     <div class="container">
-        <form>
+        <form onSubmit="handleSubmit">
             <h3 class="title">Signup Form</h3>
 
             <div class="form-group">
                 <label for="text">Name</label>
-                <input type="text" id="text" required>
+                <input type="text" id="text" name="name" required>
             </div>
             
             <div class="form-group">
                 <label for="text">Email Address</label>
-                <input type="email" required>
+                <input type="email" name="email" required>
             </div>
             
             <div class="form-group">
                 <label for="text">Password</label>
-                <input type="password" minlength="8" required>
+                <input type="password" name="password" minlength="8" required>
             </div>
             
             <div class="form-group">
-                <label for="text">agree to the terms and conditions</label>
-                <input type="checkbox" required>
+                <label for="text">Agree to the terms and conditions</label>
+                <input type="checkbox" name="agree" required>
             </div>
             
 
@@ -38,5 +38,21 @@
             
         </form>
     </div>
+
+    <script>
+        const data = {
+             
+        }
+        
+        const handleSubmit = async (data) => {
+            const result = async axios.post(
+                "http://localhost:8000/api/data",
+                data,
+                header: {
+                    "Authorization": `Bearer: ${data.jwt}`
+                }
+            )
+        }
+    </script>
 </body>
 </html>
